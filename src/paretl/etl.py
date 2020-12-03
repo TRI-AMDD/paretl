@@ -13,15 +13,16 @@ class TestData:
 
 class TestOut():
 
-    def __init__(self):
+    def __init__(self, hide=[]):
         self.__dict__['data'] = TestData()
+        self.__dict__['hide'] = hide
 
     def add_parameter(self, var, val):
         if not hasattr(self, var):
             setattr(self, var, val.kwargs['default'])
 
     def __setattr__(self, k, v):
-        if not k.startswith('_') and not k == "model_state" and not k == "embeddings" and not k == "top" and not k == "y_train" and not k == "y_pred" and not k == "y_valid" and not k == "y_std" and not k == "std_pred" and not k == "downsampling_top":
+        if not k.startswith('_') and not k in self.hide:
             print('o.%s' % k, '=', v)
         self.__dict__[k] = v
         self.data.__dict__[k] = v
