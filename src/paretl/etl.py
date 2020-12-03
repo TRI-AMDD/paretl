@@ -3,10 +3,6 @@ import time
 import json
 
 
-def no_grad(f):
-    return f
-
-
 class TestIn:
     pass
 
