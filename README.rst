@@ -51,9 +51,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/petl
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/TRI-AMDD/petl/v0.0.0.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/TRI-AMDD/petl/v0.1.0.svg
     :alt: Commits since latest release
-    :target: https://github.com/TRI-AMDD/petl/compare/v0.0.0...master
+    :target: https://github.com/TRI-AMDD/petl/compare/v0.1.0...master
 
 
 
