@@ -1,0 +1,133 @@
+action: GLOB, msg: packaging
+cwd: /Users/jenshummelshoej/git/paretl
+cmd: /Volumes/Untitled/opt/anaconda3/envs/pytorch/bin/python3.6 setup.py sdist --formats=zip --dist-dir .tox/dist
+running sdist
+running egg_info
+writing src/paretl.egg-info/PKG-INFO
+writing dependency_links to src/paretl.egg-info/dependency_links.txt
+writing entry points to src/paretl.egg-info/entry_points.txt
+writing top-level names to src/paretl.egg-info/top_level.txt
+reading manifest file 'src/paretl.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '.bumpversion.cfg'
+warning: no files found matching '.cookiecutterrc'
+warning: no files found matching '.editorconfig'
+warning: no files found matching '.appveyor.yml'
+warning: no files found matching '.readthedocs.yml'
+warning: no files found matching '.pre-commit-config.yaml'
+warning: no previously-included files matching '__pycache__/*' found anywhere in distribution
+warning: no previously-included files matching '*.so' found anywhere in distribution
+warning: no previously-included files matching '*.dylib' found anywhere in distribution
+writing manifest file 'src/paretl.egg-info/SOURCES.txt'
+running check
+creating paretl-0.0.0
+creating paretl-0.0.0/ci
+creating paretl-0.0.0/ci/templates
+creating paretl-0.0.0/docs
+creating paretl-0.0.0/docs/reference
+creating paretl-0.0.0/src
+creating paretl-0.0.0/src/paretl
+creating paretl-0.0.0/src/paretl.egg-info
+creating paretl-0.0.0/src/petl.egg-info
+creating paretl-0.0.0/tests
+copying files to paretl-0.0.0...
+copying .coveragerc -> paretl-0.0.0
+copying .travis.yml -> paretl-0.0.0
+copying AUTHORS.rst -> paretl-0.0.0
+copying CHANGELOG.rst -> paretl-0.0.0
+copying CONTRIBUTING.rst -> paretl-0.0.0
+copying LICENSE -> paretl-0.0.0
+copying MANIFEST.in -> paretl-0.0.0
+copying README.rst -> paretl-0.0.0
+copying setup.cfg -> paretl-0.0.0
+copying setup.py -> paretl-0.0.0
+copying tox.ini -> paretl-0.0.0
+copying ci/bootstrap.py -> paretl-0.0.0/ci
+copying ci/requirements.txt -> paretl-0.0.0/ci
+copying ci/templates/.travis.yml -> paretl-0.0.0/ci/templates
+copying docs/authors.rst -> paretl-0.0.0/docs
+copying docs/changelog.rst -> paretl-0.0.0/docs
+copying docs/conf.py -> paretl-0.0.0/docs
+copying docs/contributing.rst -> paretl-0.0.0/docs
+copying docs/index.rst -> paretl-0.0.0/docs
+copying docs/installation.rst -> paretl-0.0.0/docs
+copying docs/readme.rst -> paretl-0.0.0/docs
+copying docs/requirements.txt -> paretl-0.0.0/docs
+copying docs/spelling_wordlist.txt -> paretl-0.0.0/docs
+copying docs/usage.rst -> paretl-0.0.0/docs
+copying docs/reference/index.rst -> paretl-0.0.0/docs/reference
+copying docs/reference/petl.rst -> paretl-0.0.0/docs/reference
+copying src/paretl/__init__.py -> paretl-0.0.0/src/paretl
+copying src/paretl/__main__.py -> paretl-0.0.0/src/paretl
+copying src/paretl/cli.py -> paretl-0.0.0/src/paretl
+copying src/paretl/etl.py -> paretl-0.0.0/src/paretl
+copying src/paretl.egg-info/PKG-INFO -> paretl-0.0.0/src/paretl.egg-info
+copying src/paretl.egg-info/SOURCES.txt -> paretl-0.0.0/src/paretl.egg-info
+copying src/paretl.egg-info/dependency_links.txt -> paretl-0.0.0/src/paretl.egg-info
+copying src/paretl.egg-info/entry_points.txt -> paretl-0.0.0/src/paretl.egg-info
+copying src/paretl.egg-info/not-zip-safe -> paretl-0.0.0/src/paretl.egg-info
+copying src/paretl.egg-info/top_level.txt -> paretl-0.0.0/src/paretl.egg-info
+copying src/petl.egg-info/PKG-INFO -> paretl-0.0.0/src/petl.egg-info
+copying src/petl.egg-info/SOURCES.txt -> paretl-0.0.0/src/petl.egg-info
+copying src/petl.egg-info/dependency_links.txt -> paretl-0.0.0/src/petl.egg-info
+copying src/petl.egg-info/entry_points.txt -> paretl-0.0.0/src/petl.egg-info
+copying src/petl.egg-info/not-zip-safe -> paretl-0.0.0/src/petl.egg-info
+copying src/petl.egg-info/top_level.txt -> paretl-0.0.0/src/petl.egg-info
+copying tests/test_paretl.py -> paretl-0.0.0/tests
+Writing paretl-0.0.0/setup.cfg
+creating '.tox/dist/paretl-0.0.0.zip' and adding 'paretl-0.0.0' to it
+adding 'paretl-0.0.0'
+adding 'paretl-0.0.0/ci'
+adding 'paretl-0.0.0/tests'
+adding 'paretl-0.0.0/docs'
+adding 'paretl-0.0.0/src'
+adding 'paretl-0.0.0/PKG-INFO'
+adding 'paretl-0.0.0/LICENSE'
+adding 'paretl-0.0.0/CONTRIBUTING.rst'
+adding 'paretl-0.0.0/MANIFEST.in'
+adding 'paretl-0.0.0/.coveragerc'
+adding 'paretl-0.0.0/setup.py'
+adding 'paretl-0.0.0/tox.ini'
+adding 'paretl-0.0.0/AUTHORS.rst'
+adding 'paretl-0.0.0/setup.cfg'
+adding 'paretl-0.0.0/README.rst'
+adding 'paretl-0.0.0/CHANGELOG.rst'
+adding 'paretl-0.0.0/.travis.yml'
+adding 'paretl-0.0.0/ci/templates'
+adding 'paretl-0.0.0/ci/bootstrap.py'
+adding 'paretl-0.0.0/ci/requirements.txt'
+adding 'paretl-0.0.0/ci/templates/.travis.yml'
+adding 'paretl-0.0.0/tests/test_paretl.py'
+adding 'paretl-0.0.0/docs/reference'
+adding 'paretl-0.0.0/docs/index.rst'
+adding 'paretl-0.0.0/docs/requirements.txt'
+adding 'paretl-0.0.0/docs/contributing.rst'
+adding 'paretl-0.0.0/docs/conf.py'
+adding 'paretl-0.0.0/docs/spelling_wordlist.txt'
+adding 'paretl-0.0.0/docs/usage.rst'
+adding 'paretl-0.0.0/docs/installation.rst'
+adding 'paretl-0.0.0/docs/authors.rst'
+adding 'paretl-0.0.0/docs/readme.rst'
+adding 'paretl-0.0.0/docs/changelog.rst'
+adding 'paretl-0.0.0/docs/reference/index.rst'
+adding 'paretl-0.0.0/docs/reference/petl.rst'
+adding 'paretl-0.0.0/src/petl.egg-info'
+adding 'paretl-0.0.0/src/paretl.egg-info'
+adding 'paretl-0.0.0/src/paretl'
+adding 'paretl-0.0.0/src/petl.egg-info/PKG-INFO'
+adding 'paretl-0.0.0/src/petl.egg-info/not-zip-safe'
+adding 'paretl-0.0.0/src/petl.egg-info/SOURCES.txt'
+adding 'paretl-0.0.0/src/petl.egg-info/entry_points.txt'
+adding 'paretl-0.0.0/src/petl.egg-info/top_level.txt'
+adding 'paretl-0.0.0/src/petl.egg-info/dependency_links.txt'
+adding 'paretl-0.0.0/src/paretl.egg-info/PKG-INFO'
+adding 'paretl-0.0.0/src/paretl.egg-info/not-zip-safe'
+adding 'paretl-0.0.0/src/paretl.egg-info/SOURCES.txt'
+adding 'paretl-0.0.0/src/paretl.egg-info/entry_points.txt'
+adding 'paretl-0.0.0/src/paretl.egg-info/top_level.txt'
+adding 'paretl-0.0.0/src/paretl.egg-info/dependency_links.txt'
+adding 'paretl-0.0.0/src/paretl/etl.py'
+adding 'paretl-0.0.0/src/paretl/__init__.py'
+adding 'paretl-0.0.0/src/paretl/cli.py'
+adding 'paretl-0.0.0/src/paretl/__main__.py'
+removing 'paretl-0.0.0' (and everything under it)
