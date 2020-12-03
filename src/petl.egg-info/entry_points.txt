@@ -1,3 +1,0 @@
-[console_scripts]
-petl = petl.cli:main
-
