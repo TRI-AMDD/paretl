@@ -86,7 +86,6 @@ class Out:
 
     def add_parameter(self, var, val):
         cls = self.parameterized
-        # print('add par', var, val.kwargs['default'])
         if ('type' in val.kwargs and val.kwargs['type'] == JSONType):
             val.kwargs['type'] = self.JSONType
         if not hasattr(cls, var) and (not hasattr(self, 'sweep') or var not in self.sweep):
