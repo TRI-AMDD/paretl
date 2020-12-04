@@ -102,7 +102,7 @@ class TestData:
     pass
 
 
-class TestOut():
+class OutLog():
 
     def __init__(self, hide=[], logger=None):
         self.__dict__['data'] = TestData()
