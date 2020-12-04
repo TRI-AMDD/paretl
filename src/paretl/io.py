@@ -104,9 +104,12 @@ class TestData:
 
 class TestOut():
 
-    def __init__(self, hide=[], logger=lambda k, v: print('o.%s' % k, '=', v)):
+    def __init__(self, hide=[], logger=None):
         self.__dict__['data'] = TestData()
         self.__dict__['hide'] = hide
+        if logger is None:
+            def logger(k, v):
+                print('o.%s' % k, '=', v)
         self.__dict__['logger'] = logger
 
     def add_parameter(self, var, val):
