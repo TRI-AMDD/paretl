@@ -2,17 +2,13 @@ import sys
 import json
 
 
-class JSONType:
-    pass
-
-
 class In:
     pass
 
 
 class Out:
 
-    def __init__(self, cls, Parameter, JSONType):
+    def __init__(self, cls, Parameter):
         self.parameterized = cls
         self.Parameter = Parameter
         self.JSONType = JSONType
@@ -69,7 +65,7 @@ class Out:
         cls = self.parameterized
 
         # dependency injection of JSONType and Parameter
-        if (val.type == JSONType):
+        if (val.type == 'json'):
             val.type = self.JSONType
         if not hasattr(cls, var) and (not hasattr(self, 'sweep') or var not in self.sweep):
             setattr(cls, var, self.Parameter(var, **val.kwargs))
