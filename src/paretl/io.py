@@ -2,6 +2,10 @@ import sys
 import json
 
 
+class JSONType:
+    pass
+
+
 class In:
     pass
 
@@ -65,7 +69,7 @@ class Out:
         cls = self.parameterized
 
         # dependency injection of JSONType and Parameter
-        if (val.type == 'json'):
+        if (val.type == JSONType):
             val.type = self.JSONType
         if not hasattr(cls, var) and (not hasattr(self, 'sweep') or var not in self.sweep):
             setattr(cls, var, val.as_injected(self.Parameter))
