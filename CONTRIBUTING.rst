@@ -8,7 +8,7 @@ little bit helps, and credit will always be given.
 Bug reports
 ===========
 
-When `reporting a bug <https://github.com/TRI-AMDD/petl/issues>`_ please include:
+When `reporting a bug <https://github.com/TRI-AMDD/paretl/issues>`_ please include:
 
     * Your operating system name and version.
     * Any details about your local setup that might be helpful in troubleshooting.
@@ -17,14 +17,14 @@ When `reporting a bug <https://github.com/TRI-AMDD/petl/issues>`_ please include
 Documentation improvements
 ==========================
 
-petl could always use more documentation, whether as part of the
-official petl docs, in docstrings, or even on the web in blog posts,
+paretl could always use more documentation, whether as part of the
+official paretl docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Feature requests and feedback
 =============================
 
-The best way to send feedback is to file an issue at https://github.com/TRI-AMDD/petl/issues.
+The best way to send feedback is to file an issue at https://github.com/TRI-AMDD/paretl/issues.
 
 If you are proposing a feature:
 
@@ -35,13 +35,13 @@ If you are proposing a feature:
 Development
 ===========
 
-To set up `petl` for local development:
+To set up `paretl` for local development:
 
-1. Fork `petl <https://github.com/TRI-AMDD/petl>`_
+1. Fork `paretl <https://github.com/TRI-AMDD/paretl>`_
    (look for the "Fork" button).
 2. Clone your fork locally::
 
-    git clone git@github.com:YOURGITHUBNAME/petl.git
+    git clone git@github.com:YOURGITHUBNAME/paretl.git
 
 3. Create a branch for local development::
 
@@ -74,7 +74,7 @@ For merging, you should:
 4. Add yourself to ``AUTHORS.rst``.
 
 .. [1] If you don't have all the necessary python versions available locally you can rely on Travis - it will
-       `run the tests <https://travis-ci.org/TRI-AMDD/petl/pull_requests>`_ for each change you add in the pull request.
+       `run the tests <https://travis-ci.org/TRI-AMDD/paretl/pull_requests>`_ for each change you add in the pull request.
 
        It will be slower though ...
 
