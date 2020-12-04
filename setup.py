@@ -32,7 +32,7 @@ setup(
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
-    author='Jens Strabo Hummelshoej',
+    author='AMDD - Toyota Research Institute',
     author_email='jens.hummelshoej@tri.global',
     url='https://github.com/TRI-AMDD/paretl',
     packages=find_packages('src'),
