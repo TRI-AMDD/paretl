@@ -5,13 +5,15 @@ import sys
 class Parameter:
 
     type = None
+    custom = []
 
     def __init__(self, name, **kwargs):
         self.name = name
         self.__dict__.update(kwargs)
 
-    def as_injected(self, type):
-        return type(**self.__dict__)
+    def as_injected(self, injected_type):
+        d = {k: v for k, v in self.__dict__.items() if k != 'custom'}
+        return injected_type(**d)
 
 
 class Parameterized:
@@ -24,8 +26,8 @@ class Parameterized:
         self.sweep_index = 0
         super().__init__(**kwargs)
 
-    def process(self, i=0):
-        print('\033[94mDo ETL %i\033[0m' % i)
+    def process(self, i):
+        print('\033[94mDo ETL %s\033[0m' % str(i))
         self.factories["get_etl"](i, self).etl(i, self)
 
     def parameterize(self):

@@ -25,7 +25,7 @@ class Out:
             except Exception:
                 continue
             if isinstance(val, self.Parameter):
-                setattr(self, var, val.default)
+                setattr(self, var, val.kwargs['default'])
 
         # get parameter values from cmd line
         args = sys.argv[2:]
@@ -52,7 +52,7 @@ class Out:
         if hasattr(self, "sweep"):
             self.sweep = json.loads(self.sweep)
         elif hasattr(cls, "sweep"):
-            self.sweep = json.loads(cls.sweep.default)
+            self.sweep = json.loads(cls.sweep.kwargs['default'])
 
         # remove swept parameters but add first value
         if hasattr(self, "sweep"):
@@ -68,7 +68,7 @@ class Out:
         if (val.type == 'json'):
             val.type = self.JSONType
         if not hasattr(cls, var) and (not hasattr(self, 'sweep') or var not in self.sweep):
-            setattr(cls, var, self.Parameter(var, **val.kwargs))
+            setattr(cls, var, val.as_injected(self.Parameter))
 
         # remove swept parameters but add first value
         if var == 'sweep':
