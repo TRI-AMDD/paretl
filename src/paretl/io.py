@@ -8,7 +8,7 @@ class In:
 
 class Out:
 
-    def __init__(self, cls, Parameter):
+    def __init__(self, cls, Parameter, JSONType):
         self.parameterized = cls
         self.Parameter = Parameter
         self.JSONType = JSONType
