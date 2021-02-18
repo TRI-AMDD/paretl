@@ -30,6 +30,11 @@ class Sweep:
         setattr(self.o, "%s_sweep" % self.key, {k: v.as_dict() for k, v in self.ores.items()})
         return self.i, self.o
 
+    def load_io(self):
+        setattr(self.i, "%s_sweep" % self.key, {k: v.as_dict() for k, v in self.ires.items()})
+        setattr(self.o, "%s_sweep" % self.key, {k: v.as_dict() for k, v in self.ores.items()})
+        return self.i, self.o
+
 
 class Swept:
 

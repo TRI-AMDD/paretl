@@ -79,7 +79,6 @@ class Out:
             if hasattr(self, "sweep"):
                 return
             self.sweep = json.loads(val.default)
-            cls.sweep = val.as_injected(self.Parameter)
             for var, val in self.sweep.items():
                 if hasattr(cls, var):
                     delattr(cls, var)

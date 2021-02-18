@@ -2,6 +2,10 @@ from .io import In, Out
 import sys
 
 
+class Is(list):
+    pass
+
+
 class Parameter:
 
     type = None
@@ -27,6 +31,17 @@ class Parameterized:
         super().__init__(**kwargs)
 
     def process(self, i):
+        if isinstance(i, list):
+            i = Is(i)
+            for io in i:
+
+                from .util import timeit
+                # TODO make it right
+                io[1].add_parameter = lambda i, o: 0
+                io[1].timeit = timeit
+                #lambda a, b, c, d, e: 0
+
+                io.append(self.factories["get_etl"](io[0], io[1]))
         print('\033[94mDo ETL %s\033[0m' % str(i))
         self.factories["get_etl"](i, self).etl(i, self)
 
