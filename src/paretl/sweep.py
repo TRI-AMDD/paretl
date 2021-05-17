@@ -1,5 +1,13 @@
-class Result:
+"""Classes related to parameter sweeps.
 
+"""
+
+
+class Result:
+    """
+    Base class for a result of a parameter sweep.
+
+    """
     def __init__(self, kv={}):
         self.__dict__.update(kv)
 
@@ -11,6 +19,15 @@ class Result:
 
 
 class Sweep:
+    """
+    Base class for a parameter sweep.
+
+    Attributes:
+        i (object) the undecorated input
+        o (object) the undecorated input
+        ires (object) the input result
+        ores (object) the output result
+    """
 
     def __init__(self, key, i, o):
         self.key = key
@@ -37,6 +54,13 @@ class Sweep:
 
 
 class Swept:
+    """
+    Base class decorating input and output with their swept dittos.
+
+    Attributes:
+        parent (object) the undecorated input or output, or the as swept in the parent sweep
+        result (object) the result object to load into
+    """
 
     def __init__(self, parent, result):
         self.__dict__["parent"] = parent
