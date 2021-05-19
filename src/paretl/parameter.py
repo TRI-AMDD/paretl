@@ -69,15 +69,10 @@ class ParameterizingOut(Out):
         self.JSONType = JSONType
         self._in = In()
 
-    def read_parameter_values(self):
+    def read_parameter_values(self, args=sys.argv[2:]):
         self.read_parameter_defaults()
-        self.read_parameter_overrides()
-
-        # parse sweeps if any
-        if hasattr(self, "sweep"):
-            self.parse_sweep(self.sweep)
-        elif hasattr(self.parameterized, "sweep"):
-            self.parse_sweep(self.parameterized.sweep.kwargs['default'])
+        self.read_parameter_overrides(args)
+        self.parse_sweep()
 
     def read_parameter_defaults(self):
         """
@@ -124,14 +119,16 @@ class ParameterizingOut(Out):
                     if a != "--tag":
                         setattr(self, a[2:], b)
 
-    def parse_sweep(self, sweep_json):
+    def parse_sweep(self, sweep_json=None):
+        if sweep_json is None:
+            sweep_json = getattr(self, 'sweep', '{}')
         self.sweep = json.loads(sweep_json)
 
         # remove swept parameters but add first value
         for name, vals in self.sweep.items():
             # remove parameter from class
             if hasattr(self.parameterized, name):
-                delattr(self.parameterized, name)
+                setattr(self.parameterized, name, "swept")
             # add first value in sweep to this output
             setattr(self, name, vals[0])
 
@@ -189,6 +186,7 @@ class Parameterized:
         _JSONType (type): dependency injected class for JSON parameter values
     """
     factories = {}
+    doc = "A parameterized script"
 
     def __init__(self, **kwargs):
         self.parameterize()
@@ -211,9 +209,7 @@ class Parameterized:
         cls.factories = {"get_etl": get_etl}
 
         # create own doc string
-        if hasattr(self, 'doc'):
-            info = self.doc
-            cls.__doc__ += '\033[92m%s\033[0m' % info
+        cls.__doc__ = '\033[92m%s\033[0m' % self.doc
 
         # here we just need a foo input object
         i = In()
@@ -228,18 +224,17 @@ class Parameterized:
         cls.etl = get_etl(i, o)
 
         # add any custom parameters for all parameter sweep cases
-        if hasattr(o, "sweep"):
-            for var, vals in o.sweep.items():
-                for val in vals:
-                    if val in getattr(o._in, var).custom:
-                        # fetch again with custom value
-                        setattr(o, var, val)
-                        get_etl(i, o)
+        for var, vals in o.sweep.items():
+            for val in vals:
+                if val in getattr(o._in, var).custom:
+                    # fetch again with custom value
+                    setattr(o, var, val)
+                    get_etl(i, o)
         return cls
 
     def add_parameter_tags(self, tag="--tag", fmt="%s:%s", ignore=[
                 'ep', 'environment', 'metadata', 'datastore', 'run-id',
-                'task-id', 'event-logger', 'monitor', 'datastore-root', 'input-paths']):
+                'task-id', 'event-logger', 'monitor', 'datastore-root', 'input-paths'], args=sys.argv):
         """
         Method to add parameters and their values as command line arguments e.g. in the form: --tag var:val
         The primary use case is for auto-tagging metaflow runs.
@@ -251,14 +246,14 @@ class Parameterized:
         """
 
         # only add tags if we run the metaflow
-        if len(sys.argv) > 1 and (sys.argv[1] == 'run' or (len(sys.argv) > 3 and sys.argv[3] == 'run')):
+        if len(args) > 1 and (args[1] == 'run' or (len(args) > 3 and args[3] == 'run')):
             done = {}
-            args = sys.argv[2:]
+            oargs = args[2:]
 
             # add parameters overrides from the command line arguments
-            for a, b in zip(args[::2], args[1::2]):
+            for a, b in zip(oargs[::2], oargs[1::2]):
                 if a != tag and a[2:] not in ignore:
-                    sys.argv.extend([tag, fmt % (a[2:], b)])
+                    args.extend([tag, fmt % (a[2:], b)])
                     done[a[2:]] = True
 
             # add the rest of the parameters from the class itself
@@ -267,7 +262,7 @@ class Parameterized:
                 if k in done:
                     continue
                 # otherwise use default value
-                sys.argv.extend([tag, fmt % (k, str(v.kwargs['default']))])
+                args.extend([tag, fmt % (k, str(v.kwargs['default']))])
 
     def process(self, i):
         """
@@ -302,6 +297,26 @@ class Parameterized:
         # create ETL and execute it using self as output
         o = self
         get_etl(i, o).etl(i, o)
+
+    def _get_parameters(self):
+        """Provide own parameters as a generator of name,value pairs.
+
+        """
+        # go through attributes by name
+        for name in dir(self):
+            # skip private
+            if name[0] == '_':
+                continue
+
+            # make sure it is accessible and get attribute value
+            # try:
+            value = getattr(self, name, None)
+            # except Exception:
+            #    continue
+
+            # if value is a parameter yield name,value
+            if isinstance(value, self._Parameter):
+                yield name, value
 
 
 class Inputs(list):

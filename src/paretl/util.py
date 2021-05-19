@@ -5,9 +5,9 @@ def tim(method):
     def tm(*args, **kwargs):
         slf = args[0]
         if hasattr(slf.o, "timeit"):
-            slf.o.timeit(method, slf.o, *args, **kwargs)
+            return slf.o.timeit(method, slf.o, *args, **kwargs)
         else:
-            method(*args, **kwargs)
+            return method(*args, **kwargs)
     return tm
 
 

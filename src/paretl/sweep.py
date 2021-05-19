@@ -11,8 +11,8 @@ class Result:
     def __init__(self, kv={}):
         self.__dict__.update(kv)
 
-    def __repr__(self):
-        return self.__dict__.__repr__()
+    # def __repr__(self):
+    #     return self.__dict__.__repr__()
 
     def as_dict(self):
         return dict(self.__dict__)
@@ -71,9 +71,9 @@ class Swept:
         setattr(self.result, key, value)
 
     def __getattr__(self, key):
-        if key in self.__dict__:
-            return self.__dict__[key]
-        elif hasattr(self.result, key):
+        # if key in self.__dict__:
+        #     return self.__dict__[key]
+        if hasattr(self.result, key):
             return getattr(self.result, key)
         else:
             return getattr(self.parent, key)
