@@ -122,7 +122,7 @@ def parameterized(get_etl, par):
         parameter1 = par
 
         def populate(self):
-            # get default paremter values from parameterized class
+            # get default parameter values from parameterized class
             for var in dir(self):
                 if var[0] == '_':
                     continue
@@ -240,7 +240,6 @@ def test_can_process_input(sweeping, i):
     script.process(i)
     script.etl.et(i, script)
     script.etl.tl(i, script)
-    print(script.parameter1_sweep)
     assert script.result == 42
 
 
