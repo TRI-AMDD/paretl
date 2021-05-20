@@ -16,6 +16,7 @@ class Parameter:
         default (string) default value
         type (string or JSONType) type of parameter value
         custom (list) list of parameter choices that will add custom parameters
+        kwargs (dict) keyword arguments supplied at initialization
     """
 
     type = None
@@ -120,6 +121,12 @@ class ParameterizingOut(Out):
                         setattr(self, a[2:], b)
 
     def parse_sweep(self, sweep_json=None):
+        """
+        Method parse sweep parameter from json
+
+        Args:
+            sweep_json (string) the json representation of the sweep dic
+        """
         if sweep_json is None:
             sweep_json = getattr(self, 'sweep', '{}')
         self.sweep = json.loads(sweep_json)

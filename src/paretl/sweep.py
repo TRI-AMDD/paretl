@@ -21,7 +21,7 @@ class Result:
         Method to represent the result as a dict
 
         Returns:
-            the results as a dict
+            the resul as a dict
         """
         return dict(self.__dict__)
 
@@ -53,7 +53,7 @@ class Sweep:
 
     def add(self, value):
         """
-        Method to add a parameter value to the sweep
+        Method to add a parameter value case to the sweep
 
         Arguments:
             value (object) the parameter value

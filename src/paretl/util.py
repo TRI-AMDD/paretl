@@ -6,7 +6,7 @@ import time
 
 def tim(method):
     """
-    Decorator to time a method call
+    Decorator to time a method call of an ETL if its output object supports it
 
     Arguments:
         method (function) the method to time

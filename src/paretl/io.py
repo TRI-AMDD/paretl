@@ -26,7 +26,7 @@ class DebugIn(In):
     pass
 
 
-class DebugOut():
+class DebugOut(Out):
     """Output class for debugging that simply stores and logs output.
 
     """
