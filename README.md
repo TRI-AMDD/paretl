@@ -1,4 +1,5 @@
-[![codecoverage](https://raw.githubusercontent.com/jens-hummelshoej-tri/amdd-repos/main/paretl/coverage-badge.svg)](https://raw.githubusercontent.com/jens-hummelshoej-tri/amdd-repos/main/paretl/coverage-badge.svg)
+
+[![tests](https://github.com/TRI-AMDD/paretl/workflows/tests/badge.svg)](https://github.com/TRI-AMDD/paretl/workflows/tests/badge.svg)[![codecoverage](https://raw.githubusercontent.com/jens-hummelshoej-tri/amdd-repos/main/paretl/coverage-badge.svg)](https://raw.githubusercontent.com/jens-hummelshoej-tri/amdd-repos/main/paretl/coverage-badge.svg)
 
 # Parameterized ETL
 
