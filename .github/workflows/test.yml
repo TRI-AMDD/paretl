@@ -23,3 +23,27 @@ jobs:
         pip install tox tox-gh-actions
     - name: Test with tox
       run: tox
+    - name: Install dependencies
+      run: |
+        total=`coverage report | grep -Eo '[0-9]+\.[0-9]+' | tail -n 1`
+
+        if (( $(echo "$total <= 50" | bc -l) )) ; then
+            COLOR=red
+        elif (( $(echo "$total > 80" | bc -l) )); then
+            COLOR=green
+        else
+            COLOR=orange
+        fi
+        echo $COLOR
+        curl "https://img.shields.io/badge/coverage-$total%25-$COLOR" > coverage-badge.svg
+    - name: Push badge to amdd-repos
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.GITHUBKEY }}
+      with:
+        source_file: 'coverage-badge.svg'
+        destination_repo: 'TRI-AMDD/amdd-repos'
+        destination_folder: 'paretl'
+        user_email: 'jens.hummelshoej@tri.global'
+        user_name: 'jens-hummelshoej-tri'
+        commit_message: 'From github action'
