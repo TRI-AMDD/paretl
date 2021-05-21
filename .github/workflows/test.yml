@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.9]
+        python-version: [3.6]
 
     steps:
     - uses: actions/checkout@v1
@@ -42,7 +42,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.GITHUBKEY }}
       with:
         source_file: 'coverage-badge.svg'
-        destination_repo: 'TRI-AMDD/amdd-repos'
+        destination_repo: 'jens-hummelshoej-tri/amdd-repos'
         destination_folder: 'paretl'
         user_email: 'jens.hummelshoej@tri.global'
         user_name: 'jens-hummelshoej-tri'
