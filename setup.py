@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='paretl',
-    version='0.2.0',
+    version='0.3.0',
     license='Apache-2.0',
     description='Parameterized ETL',
     long_description='%s\n%s' % (

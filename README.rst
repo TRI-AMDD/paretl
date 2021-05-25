@@ -51,9 +51,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/paretl
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/TRI-AMDD/paretl/v0.2.0.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/TRI-AMDD/paretl/v0.3.0.svg
     :alt: Commits since latest release
-    :target: https://github.com/TRI-AMDD/paretl/compare/v0.2.0...master
+    :target: https://github.com/TRI-AMDD/paretl/compare/v0.3.0...master
 
 
 
