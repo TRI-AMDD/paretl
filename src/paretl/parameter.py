@@ -44,7 +44,7 @@ class Parameter:
         """
 
         # collect attributes without custom
-        d = {k: v for k, v in self.__dict__.items() if k != 'custom'}
+        d = {k: v for k, v in self.__dict__.items() if k not in ['custom', 'kwargs']}
 
         # create and return
         return injected_type(**d)
