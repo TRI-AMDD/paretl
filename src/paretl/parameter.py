@@ -12,11 +12,11 @@ class Parameter:
     Base class for a parameter.
 
     Attributes:
-        name (string) parameter name
-        default (string) default value
-        type (string or JSONType) type of parameter value
-        custom (list) list of parameter choices that will add custom parameters
-        kwargs (dict) keyword arguments supplied at initialization
+        name (string) parameter name.
+        default (string) default value.
+        type (string or JSONType) type of parameter value.
+        custom (list) list of parameter choices that will add custom parameters.
+        kwargs (dict) keyword arguments supplied at initialization.
     """
 
     type = None
@@ -246,7 +246,7 @@ class Parameterized:
         Method to add parameters and their values as command line arguments e.g. in the form: --tag var:val
         The primary use case is for auto-tagging metaflow runs.
 
-        Arguments:
+        Args:
         tag (str) command line argument string
         fmt (str) format for parameter name and value e.g. "%s:%s" for var:val
         ignore (list) names of command line arguments to ignore when auto-tagging
@@ -275,7 +275,7 @@ class Parameterized:
         """
         Method to process a single input or a list of [i,o] pairs
 
-        Arguments:
+        Args:
             i (object) a single input or a list of [i,o] pairs
         """
 

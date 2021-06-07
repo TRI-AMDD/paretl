@@ -8,7 +8,7 @@ def tim(method):
     """
     Decorator to time a method call of an ETL if its output object supports it
 
-    Arguments:
+    Args:
         method (function) the method to time
     """
     def tm(*args, **kwargs):
@@ -24,7 +24,7 @@ def timeit(method, o, *args, **kw):
     """
     Time a method call
 
-    Arguments:
+    Args:
         method (function) the method to time
         o (object) the output to add the result to
         *args forward remaing arguments to method

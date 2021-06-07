@@ -11,7 +11,7 @@ class Result:
     def __init__(self, kv={}):
         """
 
-        Arguments:
+        Args:
             kv (dict) initial results
         """
         self.__dict__.update(kv)
@@ -40,7 +40,7 @@ class Sweep:
     def __init__(self, key, i, o):
         """
 
-        Arguments:
+        Args:
             key (string) name of parameter being swept
             i (object) the input
             o (object) the output
@@ -55,7 +55,7 @@ class Sweep:
         """
         Method to add a parameter value case to the sweep
 
-        Arguments:
+        Args:
             value (object) the parameter value
 
         Returns:
@@ -101,7 +101,7 @@ class Swept:
     def __init__(self, parent, result):
         """
 
-        Arguments:
+        Args:
             parent (object) the parent input or output
             result (Result) the result object for gathering results
         """

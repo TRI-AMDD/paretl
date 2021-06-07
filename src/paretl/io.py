@@ -34,7 +34,7 @@ class DebugOut(Out):
     def __init__(self, hide=[], logger=lambda k, v: print('o.%s ' % k, '=', v)):
         """
 
-        Arguments:
+        Args:
             hide (list) names of attributes to hide from logging
             logger (lambda k,v) called when an attribute is set
         """
