@@ -65,12 +65,24 @@ class ParameterizingOut(Out):
     """
 
     def __init__(self, cls, Parameter, JSONType):
+        """
+
+        Args:
+            cls (Class): the parameterized script object with an ETL factory
+            Parameter (class): the dependency injected Parameter type
+            JSONType (class): the dependency injected JSONType type
+        """
         self.parameterized = cls
         self.Parameter = Parameter
         self.JSONType = JSONType
         self._in = In()
 
     def read_parameter_values(self, args=sys.argv[2:]):
+        """Moethod to read parameter values from a string.
+
+        Args:
+            args (string, optional): The string to read parameters from. Defaults to sys.argv[2:].
+        """
         self.read_parameter_defaults()
         self.read_parameter_overrides(args)
         self.parse_sweep()
@@ -196,6 +208,10 @@ class Parameterized:
     doc = "A parameterized script"
 
     def __init__(self, **kwargs):
+        """
+
+        Parameterize and add tags.
+        """
         self.parameterize()
         self.add_parameter_tags()
         self.sweep_index = 0

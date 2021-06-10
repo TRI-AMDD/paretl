@@ -44,6 +44,12 @@ class DebugOut(Out):
         super().__init__()
 
     def add_parameter(self, var, val):
+        """Mehod to add parameter
+
+        Args:
+            var (string) parameter name
+            val (Parameter) parameter object
+        """
         if not hasattr(self, var):
             setattr(self, var, val.default)
 

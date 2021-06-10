@@ -230,7 +230,8 @@ def test_can_parameterize_sweep(sweeping, sweep_json):
 def test_can_autotag(parameterized, args):
     script = parameterized()
     script.add_parameter_tags(args=args)
-    assert args[-8:] == ['--tag', 'parameter1:bar', '--tag', 'etl_parameter:foo', '--tag', 'parameter2:bar', '--tag', 'parameter3:42']
+    assert args[-8:] == ['--tag', 'parameter1:bar', '--tag', 'etl_parameter:foo',
+                         '--tag', 'parameter2:bar', '--tag', 'parameter3:42']
 
 
 def test_can_process_input(sweeping, i):
