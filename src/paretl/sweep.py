@@ -18,7 +18,7 @@ class Result:
 
     def as_dict(self):
         """
-        Method to represent the result as a dict
+        Method to represent the result as a dict.
 
         Returns:
             the resul as a dict
