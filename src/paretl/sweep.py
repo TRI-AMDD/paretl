@@ -12,7 +12,7 @@ class Result:
         """
 
         Args:
-            kv (dict) initial results
+            kv (dict) initial results.
         """
         self.__dict__.update(kv)
 
