@@ -20,7 +20,7 @@ def args():
 
 @pytest.fixture()
 def help_args():
-    return ['--help', 'flow.py', 'run', '--parameter1', 'bar', '--tag', 'ignore']
+    return ['flow.py', 'run', '--help', '--parameter1', 'bar', '--tag', 'ignore']
 
 
 @pytest.fixture()
