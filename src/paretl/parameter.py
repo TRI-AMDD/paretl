@@ -77,11 +77,11 @@ class ParameterizingOut(Out):
         self.JSONType = JSONType
         self._in = In()
 
-    def read_parameter_values(self, args=sys.argv[2:]):
+    def read_parameter_values(self, args=sys.argv):
         """Moethod to read parameter values from a string.
 
         Args:
-            args (string, optional): The string to read parameters from. Defaults to sys.argv[2:].
+            args (string, optional): The string to read parameters from. Defaults to sys.argv.
         """
         self.read_parameter_defaults()
         self.read_parameter_overrides(args)
@@ -104,7 +104,7 @@ class ParameterizingOut(Out):
             if isinstance(val, self.Parameter):
                 setattr(self, var, val.kwargs['default'])
 
-    def read_parameter_overrides(self, args=sys.argv[2:]):
+    def read_parameter_overrides(self, args=sys.argv):
         """
         Method to read overridden parameters from command line arguments
 
@@ -112,23 +112,26 @@ class ParameterizingOut(Out):
             args (string) command line arguments
         """
 
+        n = len(args)
+        args2 = args[2:]
+
         # get parameter value overrides from cmd line
-        if len(args) > 0:
-            if args[0] == "--help":
+        if n > 2:
+            if args2[0] == "--help":
                 print("")
                 print('\033[92mRemember certain parameter choices will add new parameters!\033[0m')
                 print("")
-                args = args[1:]
+                args2 = args2[1:]
 
-            if not (args[1] == 'run' or (len(args) > 1 and args[0] == 'run')):
+            if n < 2 or not (args[1] == 'run' or (n > 3 and args[3] == 'run')):
                 # read from (auto-) tags
-                for a, b in zip(args[::2], args[1::2]):
+                for a, b in zip(args2[::2], args2[1::2]):
                     if a == "--tag":
                         ls = b.split(':')
                         setattr(self, ls[0], ":".join(ls[1:]))
             else:
-                # read from non tags
-                for a, b in zip(args[::2], args[1::2]):
+                # run, read from non tags
+                for a, b in zip(args2[::2], args2[1::2]):
                     if a != "--tag":
                         setattr(self, a[2:], b)
 
@@ -213,7 +216,7 @@ class Parameterized:
         Parameterize and add tags.
         """
         self.parameterize()
-        self.add_parameter_tags()
+        # self.add_parameter_tags()
         self.sweep_index = 0
         super().__init__(**kwargs)
 
@@ -335,7 +338,7 @@ class Parameterized:
             # try:
             value = getattr(self, name, None)
             # except Exception:
-            #    continue
+            # continue
 
             # if value is a parameter yield name,value
             if isinstance(value, self._Parameter):
