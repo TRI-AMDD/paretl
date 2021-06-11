@@ -216,7 +216,7 @@ class Parameterized:
         Parameterize and add tags.
         """
         self.parameterize()
-        # self.add_parameter_tags()
+        self.add_parameter_tags()
         self.sweep_index = 0
         super().__init__(**kwargs)
 
@@ -271,7 +271,8 @@ class Parameterized:
         ignore (list) names of command line arguments to ignore when auto-tagging
         """
 
-        # only add tags if we run the metaflow
+        # only add tags if command is run
+        # if len(args) > 1 and (args[1] == 'run'):
         if len(args) > 1 and (args[1] == 'run' or (len(args) > 3 and args[3] == 'run')):
             done = {}
             oargs = args[2:]
