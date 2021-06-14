@@ -336,10 +336,10 @@ class Parameterized:
                 continue
 
             # make sure it is accessible and get attribute value
-            # try:
-            value = getattr(self, name, None)
-            # except Exception:
-            # continue
+            try:
+                value = getattr(self, name, None)
+            except Exception:
+                continue
 
             # if value is a parameter yield name,value
             if isinstance(value, self._Parameter):
