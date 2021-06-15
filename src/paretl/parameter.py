@@ -336,10 +336,8 @@ class Parameterized:
                 continue
 
             # make sure it is accessible and get attribute value
-            try:
-                value = getattr(self, name, None)
-            except Exception:
-                continue
+            # not using getattr because metaflow throws recursion limit exception
+            value = self.__dict__[name] if name in self.__dict__ else None
 
             # if value is a parameter yield name,value
             if isinstance(value, self._Parameter):
