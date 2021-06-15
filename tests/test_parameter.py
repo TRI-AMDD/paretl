@@ -119,6 +119,7 @@ def parameterized(get_etl, par):
         doc = "A parameterized script"
         _Parameter = Parameter
         _JSONType = JSONType
+        index = 1
         parameter1 = par
 
         def populate(self):

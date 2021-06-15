@@ -331,13 +331,13 @@ class Parameterized:
         """
         # go through attributes by name
         for name in dir(self):
-            # skip private
-            if name[0] == '_':
+            # skip private and index, input
+            # metaflow may throw recursion limit exception on getattr for index, input
+            if name[0] == '_' or name in ['index', 'input']:
                 continue
 
             # make sure it is accessible and get attribute value
-            # not using getattr because metaflow throws recursion limit exception
-            value = self.__dict__[name] if name in self.__dict__ else None
+            value = getattr(self, name, None)
 
             # if value is a parameter yield name,value
             if isinstance(value, self._Parameter):
