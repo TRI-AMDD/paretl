@@ -23,7 +23,13 @@ class DebugIn(In):
     """Input class for debugging that does nothing.
 
     """
-    pass
+    def __init__(self):
+        self.__dict__['data'] = In()
+        super().__init__()
+
+    def __setattr__(self, k, v):
+        self.__dict__[k] = v
+        self.data.__dict__[k] = v
 
 
 class DebugOut(Out):
