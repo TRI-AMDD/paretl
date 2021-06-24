@@ -24,6 +24,9 @@ class DebugIn(In):
 
     """
     def __init__(self):
+        """
+        Add data attribute.
+        """
         self.__dict__['data'] = In()
         super().__init__()
 
@@ -60,6 +63,12 @@ class DebugOut(Out):
             setattr(self, var, val.default)
 
     def __setattr__(self, k, v):
+        """
+
+        Args:
+            k (string): name
+            v (object): value
+        """
         if not k.startswith('_') and k not in self.hide:
             self.logger(k, v)
         self.__dict__[k] = v
