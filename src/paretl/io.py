@@ -40,7 +40,7 @@ class DebugOut(Out):
 
     """
 
-    def __init__(self, hide=[], logger=lambda k, v: print('o.%s ' % k, '=', v)):
+    def __init__(self, hide=[], logger=lambda k, v: print('o.%s ' % k, '=', v), include=None):
         """
 
         Args:
@@ -50,6 +50,7 @@ class DebugOut(Out):
         self.__dict__['data'] = Out()
         self.__dict__['hide'] = hide
         self.__dict__['logger'] = logger
+        self.__dict__['include'] = include
         super().__init__()
 
     def add_parameter(self, var, val):
@@ -69,7 +70,10 @@ class DebugOut(Out):
             k (string): name
             v (object): value
         """
-        if not k.startswith('_') and k not in self.hide:
+        if self.include is not None:
+            if k in self.include:
+                self.logger(k, v)
+        elif not k.startswith('_') and k not in self.hide:
             self.logger(k, v)
         self.__dict__[k] = v
         self.data.__dict__[k] = v
