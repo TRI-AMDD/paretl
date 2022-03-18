@@ -8,6 +8,7 @@ class In:
     Base class for intermediate-state-passing dubbed input, in or i.
 
     """
+    id = ''
     pass
 
 
