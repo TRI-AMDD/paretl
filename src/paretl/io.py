@@ -41,17 +41,18 @@ class DebugOut(Out):
 
     """
 
-    def __init__(self, hide=[], logger=lambda k, v: print('o.%s ' % k, '=', v), include=None):
+    def __init__(self, hide=[], logger=lambda k, v: print('o.%s ' % k, '=', v), include=None, parameters={}):
         """
 
         Args:
             hide (list) names of attributes to hide from logging
             logger (lambda k,v) called when an attribute is set
         """
-        self.__dict__['data'] = Out()
-        self.__dict__['hide'] = hide
-        self.__dict__['logger'] = logger
-        self.__dict__['include'] = include
+        self.data = Out()
+        self._hide = hide
+        self._logger = logger
+        self._include = include
+        self._parameters = parameters
         super().__init__()
 
     def add_parameter(self, var, val):
@@ -61,6 +62,7 @@ class DebugOut(Out):
             var (string) parameter name
             val (Parameter) parameter object
         """
+        self._parameters[var] = val
         if not hasattr(self, var):
             setattr(self, var, val.default)
 
@@ -71,10 +73,14 @@ class DebugOut(Out):
             k (string): name
             v (object): value
         """
-        if self.include is not None:
-            if k in self.include:
-                self.logger(k, v)
-        elif not k.startswith('_') and k not in self.hide:
-            self.logger(k, v)
+        if k in ['data'] or k.startswith('_'):
+            self.__dict__[k] = v
+            return
+
+        if self._include is not None:
+            if k in self._include:
+                self._logger(k, v)
+        elif k not in self._hide:
+            self._logger(k, v)
         self.__dict__[k] = v
         self.data.__dict__[k] = v

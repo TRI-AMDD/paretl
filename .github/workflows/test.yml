@@ -51,7 +51,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.GITHUBKEY }}
       with:
         source_file: 'coverage-badge.svg'
-        destination_repo: 'jens-hummelshoej-tri/amdd-repos'
+        destination_repo: 'TRI-AMDD/repos'
         destination_folder: 'paretl'
         user_email: 'jens.hummelshoej@tri.global'
         user_name: 'jens-hummelshoej-tri'

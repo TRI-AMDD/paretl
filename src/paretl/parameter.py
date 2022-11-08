@@ -50,6 +50,19 @@ class Parameter:
         return injected_type(**d)
 
 
+class Parameters(dict):
+    """
+    Base class a set of parameters.
+
+    """
+
+    def __repr__(self):
+        str = ""
+        for var, val in self.items():
+            str += f"--{var} \t{val.help} [default: {val.default}]\n"
+        return str
+
+
 class ParameterizingOut(Out):
     """
     Class used at initialization of a parameterized object to gather parameters from its ETL and make them concrete.

@@ -42,3 +42,31 @@ def timeit(method, o, *args, **kw):
         # simple naming scheme: ms_class_method
         setattr(o, 'ms_%s_%s' % (type(args[0]).__name__, method.__name__),  delta)
     return result
+
+
+def compress(value, ndarray, array, modf):
+    """
+    Compact data types of arrays before saving output
+    """
+    if isinstance(value, ndarray):
+        dtype = value.dtype
+        dt = dtype.str[1:]
+        if dtype.kind in ['i', 'u'] or (dt in ['f2', 'f4', 'f8'] and abs(modf(value)[0]).sum() == 0):
+            a, b = value.min(), value.max()
+            if a >= 0 and b < 2**1:
+                dt = 'b1'
+            elif a >= 0 and b < 2**8:
+                dt = 'u1'
+            elif a > -2**7 and b < 2**7:
+                dt = 'i1'
+            elif a >= 0 and b < 2**16 and dt not in ['f2']:
+                dt = 'u2'
+            elif a > -2**15 and b < 2**15 and dt not in ['f2']:
+                dt = 'i2'
+            elif a >= 0 and b < 2**32 and dt not in ['f2', 'f4']:
+                dt = 'u4'
+            elif a > -2**31 and b < 2**31 and dt not in ['f2', 'f4']:
+                dt = 'i4'
+        if dt != dtype.str[1:]:
+            value = array(value, dtype=dt)
+    return value

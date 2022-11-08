@@ -4,7 +4,6 @@ from __future__ import absolute_import
 from __future__ import print_function
 
 import io
-import re
 from glob import glob
 from os.path import basename
 from os.path import dirname
@@ -28,10 +27,7 @@ setup(
     version='0.3.0',
     license='Apache-2.0',
     description='Parameterized ETL',
-    long_description='%s\n%s' % (
-        re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
-        re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
-    ),
+    long_description='%s' % read('README.md'),
     author='AMDD - Toyota Research Institute',
     author_email='jens.hummelshoej@tri.global',
     url='https://github.com/TRI-AMDD/paretl',
